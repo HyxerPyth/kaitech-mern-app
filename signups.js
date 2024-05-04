@@ -13,7 +13,7 @@ const client = new CosmosClient({ endpoint: endpoint, key: key });
 const database = client.database(database_id);
 const container = database.container(container_name);
 
-// POST route to create a new user
+//  route to create a new user
 router.post('/signup', async (req, res) => {
     try {
         // Extract user data from request body

@@ -9,8 +9,8 @@ const Home = (props) => {
         <div>
             <div>
                 <h2 className={style.Title}>KaiTech</h2>
-                <p className={style.Description}>you can use signup button to register you phone number</p>
-                <p className={style.Description}>once you signed up, you will be able to call the Andrew Tate</p>
+                <p className={style.Description}>you can use the signup button to register you phone number</p>
+                <p className={style.Description}>once you signed up, you will be able to call Andrew Tate</p>
             </div>
            <div className={style.Container}>
                 <NavLink to="/signin">

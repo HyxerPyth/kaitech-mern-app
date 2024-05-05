@@ -2,6 +2,8 @@ const express = require('express');
 const { CosmosClient } = require('@azure/cosmos');
 const router = express.Router();
 require('dotenv').config();
+const bcrypt = require('bcrypt');
+
 
 
 const endpoint = process.env.COSMOSDB_ENDPOINT;
@@ -16,8 +18,12 @@ const container = database.container(container_name);
 //  route to create a new user
 router.post('/signup', async (req, res) => {
     try {
+
         // Extract user data from request body
-        const userData = req.body;
+        const { Email, PhoneNumber, PasswordHash } = req.body;
+
+        // Hash the password
+        const hashedPassword = await bcrypt.hash(PasswordHash, 10);
 
         // Check if user already exists
         const { resources: existingUsers } = await container.items
@@ -32,7 +38,7 @@ router.post('/signup', async (req, res) => {
         }
 
         // Create user in Cosmos DB
-        await container.items.create(userData);
+        await container.items.create(userData, {PasswordHash: hashedPassword});
 
         // User created successfully
         res.json({ status: 'ok', message: 'User created successfully' });

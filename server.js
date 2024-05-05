@@ -15,10 +15,12 @@ app.use('/signups', signups);
 
 // Production script 
 
-app.use(express.static('./client/build'));
+const staticFilesPath = path.join(__dirname, 'client', 'build');
+
+app.use(express.static(staticFilesPath));
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')
-)});
+    res.sendFile(path.join(staticFilesPath, 'index.html'));
+});
 
 // Start the server
 app.listen(8080, () => {

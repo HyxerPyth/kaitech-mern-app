@@ -13,6 +13,6 @@ app.get('/', (req, res) => {
 app.use('/signups', signups);
 
 // Start the server
-app.listen(3001, () => {
+app.listen(8080, () => {
     console.log('Server is running on port 3001');
 });

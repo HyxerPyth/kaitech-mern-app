@@ -135,6 +135,7 @@ const SignUpForm = (props) => {
                                 </div>
                             )}
                         </Field>
+                        Date Of Birth
                         <Field name="DateOfBirth"  type="date">
                             {props => (
                                 <div className={`${style.control} ${style['block-cube']} ${style['block-input']}`}>

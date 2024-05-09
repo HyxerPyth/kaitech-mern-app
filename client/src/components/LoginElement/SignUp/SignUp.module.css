@@ -146,3 +146,17 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
     -moz-appearance: textfield;
 }
+
+
+.donateButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* or absolute, depending on your layout */
+    top: 700px; /* adjust as needed */
+    left: 1300px;
+}
+
+.formBack {
+    background-color: #fffdfd;
+}

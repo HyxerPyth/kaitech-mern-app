@@ -49,8 +49,7 @@ const SignUpForm = (props) => {
     return (
 
         <Form 
-            onSubmit={onSubmit}
-            initialValues={{PhoneNumber: '+1'}}> 
+            onSubmit={onSubmit}> 
             {props => (
                     <form className={style.form} autoComplete="off" onSubmit={props.handleSubmit}>
                         <h1>Sign Up</h1>

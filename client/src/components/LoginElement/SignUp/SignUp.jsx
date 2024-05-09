@@ -36,6 +36,21 @@ const SignUpForm = (props) => {
             },
         };
 
+        switch (currentField) {
+            case 'FirstName':
+                setCurrentField('LastName');
+                break;
+            case 'LastName':
+                setCurrentField('Email');
+                break;
+            case 'Email':
+                setCurrentField('Password');
+                break;
+            // Add more cases as needed for additional fields
+            default:
+                setCurrentField('FirstName');
+        };
+
 
 
         const signUpSuccessful = await props.createUser(userData);
@@ -69,6 +84,7 @@ const SignUpForm = (props) => {
                                     </div>
                                 </div>
                             )}
+                        
                         </Field>
                         <Field name="LastName" component="input"  type="text">
                             {props => (

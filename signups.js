@@ -35,6 +35,15 @@ router.post('/signup', async (req, res) => {
             })
             .fetchAll();
 
+        // Check if user add +1 if not add it 
+
+        if (!userData.PhoneNumber.includes('+1')) {
+            userData.PhoneNumber = '+1' + userData.PhoneNumber;
+        }
+        else {
+            userData.PhoneNumber = userData.PhoneNumber;
+        }
+
 
         if (existingUsers.length > 0) {
             return res.status(400).json({ error: 'User already exists' });

@@ -15,11 +15,9 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(staticFilesPath, 'index.html'));
 });
 
-// Use userController to handle user-related endpoints
 app.use('/signup', signups);
 
 
-// Start the server
 app.listen(8080, () => {
     console.log('Server is running on port 8080');
 });

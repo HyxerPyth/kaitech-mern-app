@@ -15,7 +15,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(staticFilesPath, 'index.html'));
 });
 
-app.use('/signup', signups);
+app.use('/signups', signups);
 
 
 app.listen(8080, () => {

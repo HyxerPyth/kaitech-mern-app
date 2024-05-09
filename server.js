@@ -15,7 +15,7 @@ app.get('*', (req, res) => {
 });
 
 // Use userController to handle user-related endpoints
-app.use('/signups', signups);
+app.use('/signup', signups);
 
 
 // Start the server

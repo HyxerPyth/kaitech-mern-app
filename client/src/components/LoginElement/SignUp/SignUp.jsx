@@ -8,24 +8,16 @@ import { useNavigate } from 'react-router-dom';
 
 const SignUpForm = (props) => {
 
+
     const navigate = useNavigate();
 
-    const validatePhoneNumber = (value) => {
-        if (!value) {
-            return 'Required';
-        }
-        if (!/^(\+1)?\d{10}$/.test(value)) {
-            return 'Invalid phone number. Please enter a 10-digit number starting with +1';
-        }
-    };
-
     const onSubmit = async values => {
-        console.log(values);
 
         if (!values.FirstName || !values.LastName || !values.Email || !values.Password) {
             console.error('Missing required field');
             return;
         }
+
 
 
         const userData = {
@@ -43,6 +35,7 @@ const SignUpForm = (props) => {
                 Country: ""
             },
         };
+
 
 
         const signUpSuccessful = await props.createUser(userData);
@@ -96,7 +89,7 @@ const SignUpForm = (props) => {
                             name="PhoneNumber" 
                             component="input"  
                             type="tel" 
-                            validate={validatePhoneNumber}
+                            // validate={validatePhoneNumber}
                         >
                             {props => (  
                                 <div className={`${style.control} ${style['block-cube']} ${style['block-input']}`}>
@@ -179,8 +172,6 @@ const SignUpForm = (props) => {
 
 
 const SignUp = (props) => {
-
-    
 
     return (
         <SignUpForm createUser={props.createUser}/>

@@ -151,7 +151,7 @@ const SignUpForm = (props) => {
                             )}
                         </Field>
                             <button className={`${style.btn} ${style['block-cube']} ${style['block-cube-hover']}`} type="submit">
-                            Sign Up
+                            
                                 <div>
                                     <div className={style['bg-top']}>
                                     <div className={style['bg-inner']}></div>
@@ -159,7 +159,7 @@ const SignUpForm = (props) => {
                                     <div className={style['bg-right']}>
                                         <div className={style['bg-inner']}></div>
                                     </div>
-                                    <div className={style.bg}>
+                                    <div className={style.bg}>Sign Up
                                         <div className={style['bg-inner']}></div>
                                     </div>
                                 </div>

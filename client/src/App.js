@@ -7,7 +7,7 @@ import Home from "./pages/Home/Home";
 import Header from './components/Header/Header';
 import NavBar from './components/Nav/NavBar';
 import Profile from './pages/Profile/Profile'; 
-
+import TalkingCircle from './pages/TalkingCircle/TalkingCircle';
 
 function App(props) {
 
@@ -22,6 +22,7 @@ function App(props) {
             <Route path="/signin" element={<SignIn />}/>
             <Route path="/signup" element={<SignUp store={props.store} />}/>
             <Route path="/profile" element={<Profile />}/>
+            <Route path="/talking-circle" element={<TalkingCircle />}/>
           </Routes>
         </div>
       </div>

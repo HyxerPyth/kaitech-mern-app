@@ -47,34 +47,24 @@ const TalkingCircleComponentContainer = (props) => {
 
     const getResponse = async () => {
         try {
-            const res = await fetch('http://127.0.0.1:3002/get-response?message='+transcript+'&person_name='+selectedOption.internal_name);
-            const data = await res.text()
-            setResponse(data)
-            playAudio({ text: data, voiceId: selectedOption.voice_id })
+            const response = await axios.get('http://127.0.0.1:3002/get-response', {
+                params: {
+                    message: transcript,
+                    person_name: selectedOption.internal_name,
+                    voice_id: selectedOption.voice_id
+                },
+                responseType: 'blob'
+            });
+
+            playAudio(response.data)
         } catch (error) {
             console.error('Error fetching data:', error)
         }
     }
 
-    const playAudio = async ({ text, voiceId }) => {
-        const response = await axios.post(
-          `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`,
-          { text },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              'xi-api-key': '93b955fe649c906b83d747f4f63b8989',
-            },
-            responseType: 'blob',
-            model_id: 'eleven_multilingual_v2',
-            "voice_settings": {
-                "stability": 1,
-                "similarity_boost": 1
-            }
-          }
-        );
+    const playAudio = async (data) => {
       
-        const audio = new Audio(URL.createObjectURL(response.data));
+        const audio = new Audio(URL.createObjectURL(data));
         audio.play();
       
         await new Promise(resolve => {
@@ -83,8 +73,6 @@ const TalkingCircleComponentContainer = (props) => {
           });
         });
       };
-      
-
 
     return (
         <div>

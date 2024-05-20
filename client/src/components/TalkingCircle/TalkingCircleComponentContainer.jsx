@@ -16,8 +16,6 @@ const TalkingCircleComponentContainer = (props) => {
     
     const [callData, setCallData] = useState([])
 
-    const [answer, setAnswer] = useState('')
-
     const {
         transcript,
         listening,
@@ -27,6 +25,12 @@ const TalkingCircleComponentContainer = (props) => {
 
     const startListening = (language) => SpeechRecognition.startListening({ continuous: true, language })
 
+    const addToArray = (newElement) => {
+        const newArray = [...callData, newElement];
+    
+        setCallData(newArray)
+      }
+
     const handleTogglePulse = () => {
         setIsPulsing(!isPulsing)
         // console.log(selectedOption)
@@ -35,7 +39,7 @@ const TalkingCircleComponentContainer = (props) => {
             startListening(selectedOption.language)
         } else {
             SpeechRecognition.abortListening()
-            setCallData([...callData, {name: 'user', message: transcript }])
+            addToArray({name: 'USER', message: transcript })
             getResponse()
             resetTranscript()
         }
@@ -51,17 +55,27 @@ const TalkingCircleComponentContainer = (props) => {
     const getResponse = async () => {
 
         // get asnwer from server
+        const request_data = {
+            message: transcript,
+            person_name: selectedOption.internal_name,
+            call_data: callData,
+        }
+
         try {
-            const res = await fetch('http://127.0.0.1:3002/get-response?message='+transcript+'&person_name='+selectedOption.internal_name+'&calldata='+[]);
-            const data = await res.text()
-            // console.log(data)
-            setCallData([...callData, {name: selectedOption.name, message: data }])
+
+            const res = await axios.post('http://127.0.0.1:3002/get-response', request_data, {
+                headers: {
+                'Content-Type': 'application/json',
+                },
+            })
+
+            addToArray({name: selectedOption.internal_name, message: res.data })
 
             // get audio from server
             try {
                 const response = await axios.get('http://127.0.0.1:3002/get-response-audio', {
                     params: {
-                        answer: data,
+                        answer: res.data,
                         voice_id: selectedOption.voice_id
                     },
                     responseType: 'blob'

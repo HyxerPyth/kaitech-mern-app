@@ -6,6 +6,7 @@ import axios from 'axios'
 
 const TalkingCircleComponentContainer = (props) => {
     const [isPulsing, setIsPulsing] = useState(false)
+    const [isThinking, setIsThinking] = useState(false)
 
     const options = [
         { name: "Oleh Krainyk", language: "ru", voice_id: "e9vdovKhaVvQkqj8VRgD" , internal_name: "olehKrainyk" },
@@ -32,9 +33,9 @@ const TalkingCircleComponentContainer = (props) => {
       }
 
     const handleTogglePulse = () => {
+
         setIsPulsing(!isPulsing)
-        // console.log(selectedOption)
-        
+
         if (!isPulsing) {
             startListening(selectedOption.language)
         } else {
@@ -54,6 +55,8 @@ const TalkingCircleComponentContainer = (props) => {
 
     const getResponse = async () => {
 
+        setIsThinking(true)
+
         // get asnwer from server
         const request_data = {
             message: transcript,
@@ -62,7 +65,6 @@ const TalkingCircleComponentContainer = (props) => {
         }
 
         try {
-
             const res = await axios.post('http://127.0.0.1:3002/get-response', request_data, {
                 headers: {
                 'Content-Type': 'application/json',
@@ -80,7 +82,8 @@ const TalkingCircleComponentContainer = (props) => {
                     },
                     responseType: 'blob'
                 })
-
+                
+                setIsThinking(false)
                 playAudio(response.data)
             } catch (error) {
                 console.error('Error fetching data:', error)
@@ -88,21 +91,19 @@ const TalkingCircleComponentContainer = (props) => {
         } catch (error) {
             console.error('Error fetching data:', error)
         }
-
-        
     }
 
     const playAudio = async (data) => {
       
-        const audio = new Audio(URL.createObjectURL(data));
-        audio.play();
+        const audio = new Audio(URL.createObjectURL(data))
+        audio.play()
       
         await new Promise(resolve => {
           audio.addEventListener('ended', () => {
-            resolve();
-          });
-        });
-      };
+            resolve()
+          })
+        })
+      }
 
     return (
         <div>
@@ -118,11 +119,11 @@ const TalkingCircleComponentContainer = (props) => {
             </div>
 
             <div className={style.circleWrapper}>
-                <motion.svg height="300" width="300" animate={isPulsing ? { scale: [1, 1.1, 1], opacity: [1, 0.8, 1] } : { scale: [1, 1], opacity: 1 }}
-                    transition={isPulsing ? { repeat: Infinity, duration: 0.7, ease: "easeInOut" } : {}}
-                    onClick={() => handleTogglePulse()} className={style.circleSVG}>
-                    <circle r="135" cx="150" cy="150" fill="white" />
-                </motion.svg>
+                <svg height='300px' width='300px'>
+                    <motion.circle r="135" cx="150" cy="150" fill="white" height="300" width="300" animate={isPulsing ? { scale: [1, 1.15, 1], opacity: [1, 0.7, 1] } : isThinking ? {transform: ['translateY(10px)', 'translateY(-10px)', 'translateY(10px)'] , opacity: [1, 1]} : { scale: [1, 1], opacity: [1, 1], transform: 'translateY(0px)' }}
+                    transition={isPulsing || isThinking ? { repeat: Infinity, duration: 0.7, ease: "easeInOut" } : {}}
+                    onClick={() => handleTogglePulse()} className={style.circleSVG}/>
+                </svg>
             </div>
         </div>
     );

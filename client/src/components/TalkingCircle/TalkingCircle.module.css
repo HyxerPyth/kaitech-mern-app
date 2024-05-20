@@ -8,6 +8,8 @@
 
 .circleSVG {
     outline: none;
+    align-self: center;
+    justify-content: center;
 }
 
 .selectPerson {

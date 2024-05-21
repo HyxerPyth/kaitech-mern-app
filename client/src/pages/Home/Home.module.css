@@ -13,7 +13,7 @@
     border-radius: 4px;
 }
 
-.LoginButton:hover, .SignupButton:hover {
+.LoginButton:hover, .SignupButton:hover, .talkingCircleButton:hover {
     background-color: #ffffff;
     color: #000000;
 }
@@ -21,9 +21,8 @@
 .Container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh; /* Adjust as needed */
-    
+    align-items: flex-end;
+    height: 60vh; /* Adjust as needed */
 }
 
 .Description {
@@ -48,4 +47,26 @@
     position: relative; /* or absolute, depending on your layout */
     top: 600px; /* adjust as needed */
     left: 1400px; /* adjust as needed */
+}
+
+.talkingCircleLink {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.talkingCircleButton {
+    padding: 10px 24px;
+    font-size: 30px;
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #fff;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    border-radius: 4px;
 }

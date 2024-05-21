@@ -9,12 +9,11 @@ const TalkingCircleComponentContainer = (props) => {
     const [isThinking, setIsThinking] = useState(false)
 
     const options = [
-        { name: "Oleh Krainyk", language: "ru", voice_id: "e9vdovKhaVvQkqj8VRgD" , internal_name: "olehKrainyk" },
-        { name: "Andrew Tate", language: "en-US", voice_id: "ZCcavn038oJeGX5Y627R" , internal_name: "andrewTate" }
+        { name: "Andrew Tate", language: "en-US", language_display: "english (us)" , voice_id: "ZCcavn038oJeGX5Y627R" , internal_name: "andrewTate" },
+        { name: "Oleh Krainyk", language: "ru", language_display: "russian", voice_id: "e9vdovKhaVvQkqj8VRgD" , internal_name: "olehKrainyk" }
     ]
 
     const [selectedOption, setSelectedOption] = useState(options[0])
-    
     const [callData, setCallData] = useState([])
 
     const {
@@ -27,13 +26,11 @@ const TalkingCircleComponentContainer = (props) => {
     const startListening = (language) => SpeechRecognition.startListening({ continuous: true, language })
 
     const addToArray = (newElement) => {
-        const newArray = [...callData, newElement];
-    
+        const newArray = [...callData, newElement]
         setCallData(newArray)
       }
 
     const handleTogglePulse = () => {
-
         setIsPulsing(!isPulsing)
 
         if (!isPulsing) {
@@ -106,7 +103,7 @@ const TalkingCircleComponentContainer = (props) => {
       }
 
     return (
-        <div>
+        <div className={style.personSelectionRow}>
             <div className={style.selectPerson}>
                 <label htmlFor="options">Choose an option: </label>
                 <select id="options" value={selectedOption.name} onChange={handleSelectChange}>
@@ -116,13 +113,34 @@ const TalkingCircleComponentContainer = (props) => {
                         </option>
                     ))}
                 </select>
+                <div className={style.language_display}>
+                    {selectedOption.language_display}
+                </div>
             </div>
 
             <div className={style.circleWrapper}>
-                <svg height='300px' width='300px'>
-                    <motion.circle r="135" cx="150" cy="150" fill="white" height="300" width="300" animate={isPulsing ? { scale: [1, 1.15, 1], opacity: [1, 0.7, 1] } : isThinking ? {transform: ['translateY(10px)', 'translateY(-10px)', 'translateY(10px)'] , opacity: [1, 1]} : { scale: [1, 1], opacity: [1, 1], transform: 'translateY(0px)' }}
-                    transition={isPulsing || isThinking ? { repeat: Infinity, duration: 0.7, ease: "easeInOut" } : {}}
-                    onClick={() => handleTogglePulse()} className={style.circleSVG}/>
+                <svg height='100%' width='100%' viewBox="0 0 450 450" className={style.svgcircle}>
+
+                    <motion.circle
+                        r="100" 
+                        cx="225" 
+                        cy="225" 
+                        fill="white"
+                        height="450" 
+                        width="450" 
+                        animate={
+                            isPulsing 
+                            ? { scale: [1, 1.05, 1], opacity: [1, 0.7, 1] } 
+                            : isThinking 
+                            ? { y: [15, -15, 15], opacity: [1, 1], rotate: [0, 360]} 
+                            : { scale: [1], opacity: [1, 1], y: 0 }
+                        }
+                        transition={isPulsing || isThinking ? { repeat: Infinity, duration: 0.7, ease: "easeInOut" } : {}}
+                        onClick={() => handleTogglePulse()} 
+                        className={style.circleSVG}
+                />
+
+                
                 </svg>
             </div>
         </div>

@@ -1,9 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import configureStore from './redux/configureStore';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import './index.css'
+import App from './App'
+import configureStore from './redux/configureStore'
 
 const reduxStore = configureStore()
 
@@ -13,6 +12,3 @@ root.render(
     <App store={reduxStore} />
   </React.StrictMode>
 );
-
-
-reportWebVitals();

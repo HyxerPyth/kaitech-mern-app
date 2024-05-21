@@ -22,12 +22,20 @@ const Home = (props) => {
                     <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
                 </form>
             </div>
+
+            <div className={style.talkingCircleLink}>
+                <NavLink to="/talking-circle">
+                    <button className={style.talkingCircleButton}>
+                        Talk to people
+                    </button>
+                </NavLink>
+            </div>
            <div className={style.Container}>
-                <NavLink to="/signin">
+                {/* <NavLink to="/signin">
                     <button className={style.LoginButton}>
                         Sign In
                     </button>
-                </NavLink>
+                </NavLink> */}
                 <NavLink to="/signup">
                     <button className={style.SignupButton}>
                         Sign Up

@@ -11,6 +11,8 @@ const staticFilesPath = path.join(__dirname, 'client', 'build');
 
 app.use(express.static(staticFilesPath));
 
+// Path: signups.js
+
 app.get('*', (req, res) => {
     res.sendFile(path.join(staticFilesPath, 'index.html'));
 });
@@ -21,3 +23,4 @@ app.use('/signups', signups);
 app.listen(8080, () => {
     console.log('Server is running on port 8080');
 });
+

@@ -62,7 +62,7 @@ const TalkingCircleComponentContainer = (props) => {
         }
 
         try {
-            const res = await axios.post('http://kai-tech.org/get-response', request_data, {
+            const res = await axios.post('https://kai-tech.org/get-response', request_data, {
                 headers: {
                 'Content-Type': 'application/json',
                 },
@@ -72,7 +72,7 @@ const TalkingCircleComponentContainer = (props) => {
 
             // get audio from server
             try {
-                const response = await axios.get('http://kai-tech.org/get-response-audio', {
+                const response = await axios.get('https://kai-tech.org/get-response-audio', {
                     params: {
                         answer: res.data,
                         voice_id: selectedOption.voice_id

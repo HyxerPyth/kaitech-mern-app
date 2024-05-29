@@ -1,8 +1,7 @@
 {
   "name": "kaitech",
   "version": "0.1.0",
-  "proxy": "http://localhost:8080",
-  "homepage": "https://kaitech-website.azurewebsites.net",
+  "homepage": "https://kai-tech.org",
   "private": true,
   "dependencies": {
     "@azure/cosmos": "^4.0.0",

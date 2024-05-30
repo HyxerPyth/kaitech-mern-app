@@ -8,7 +8,6 @@ const Home = (props) => {
     return (
         <div className={style.homeWrapper}>
             <div className={style.Text}>
-                <h2 className={style.Title}>KaiTech</h2>
                 <p className={style.Description}>you can use the signup button to register you phone number</p>
                 <p className={style.Description}>once you signed up, you will be able to call Andrew Tate</p>
             </div>

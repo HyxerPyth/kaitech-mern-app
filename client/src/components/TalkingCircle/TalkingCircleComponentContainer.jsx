@@ -102,6 +102,13 @@ const TalkingCircleComponentContainer = (props) => {
         })
       }
 
+    const handleTEST = () => {
+        axios.get('https://kai-tech.azurewebsites.net/').then((res) => {
+            console.log(res)
+        })
+    }
+
+
     return (
         <div className={style.personSelectionRow}>
             <div className={style.selectPerson}>
@@ -117,6 +124,8 @@ const TalkingCircleComponentContainer = (props) => {
                     {selectedOption.language_display}
                 </div>
             </div>
+
+            <div onClick={handleTEST}>TEST</div>
 
             <div className={style.circleWrapper}>
                 <svg height='100%' width='100%' viewBox="0 0 450 450" className={style.svgcircle}>

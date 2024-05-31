@@ -8,10 +8,31 @@ const Home = (props) => {
     return (
         <div className={style.homeWrapper}>
             <div className={style.Text}>
-                <p className={style.Description}>you can use the signup button to register you phone number</p>
-                <p className={style.Description}>once you signed up, you will be able to call Andrew Tate</p>
+                <div className={style.Description}>you can use the signup button to register you phone number</div>
+                <div className={style.Description}>once you signed up, you will be able to call Andrew Tate</div>
             </div>
-            <div className={style.donateButton}> 
+            
+           
+                <div className={style.talkingCircleLink}>
+                    <NavLink to="/talking-circle">
+                        <button className={style.talkingCircleButton}>
+                            Talk to people
+                        </button>
+                    </NavLink>
+                </div>
+                
+                {/* <NavLink to="/signin">
+                <button className={style.LoginButton}>
+                    Sign In
+                </button>
+                </NavLink> */}
+                <NavLink to="/signup" className={style.SignupButtonLink}>
+                    <button className={style.SignupButton}>
+                        Sign Up
+                    </button>
+                </NavLink>
+           
+           <div className={style.donateButton}> 
                 <form action="https://www.paypal.com/donate" method="post" target="_top">
                     <input type="hidden" name="business" value="A3PQEFVJU37W4" />
                     <input type="hidden" name="no_recurring" value="0" />
@@ -21,26 +42,6 @@ const Home = (props) => {
                     <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" />
                 </form>
             </div>
-
-            <div className={style.talkingCircleLink}>
-                <NavLink to="/talking-circle">
-                    <button className={style.talkingCircleButton}>
-                        Talk to people
-                    </button>
-                </NavLink>
-            </div>
-           <div className={style.Container}>
-                {/* <NavLink to="/signin">
-                    <button className={style.LoginButton}>
-                        Sign In
-                    </button>
-                </NavLink> */}
-                <NavLink to="/signup">
-                    <button className={style.SignupButton}>
-                        Sign Up
-                    </button>
-                </NavLink>
-           </div>
         </div>
     );
 }

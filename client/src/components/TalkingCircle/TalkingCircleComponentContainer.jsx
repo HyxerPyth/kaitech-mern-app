@@ -103,7 +103,7 @@ const TalkingCircleComponentContainer = (props) => {
       }
 
     const handleTEST = () => {
-        axios.get('https://kai-tech.azurewebsites.net/').then((res) => {
+        axios.get('https://kai-tech.azurewebsites.net/test').then((res) => {
             console.log(res)
         })
     }

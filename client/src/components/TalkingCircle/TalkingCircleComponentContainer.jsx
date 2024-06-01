@@ -81,7 +81,9 @@ const TalkingCircleComponentContainer = (props) => {
                 })
                 
                 setIsThinking(false)
-                playAudio(response.data)
+                const blob = new Blob([response.data], { type: 'audio/mpeg' });
+                playAudio(blob)
+                console.log(response.data)
             } catch (error) {
                 console.error('Error fetching data:', error)
             }

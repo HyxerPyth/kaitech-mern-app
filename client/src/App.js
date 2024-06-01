@@ -18,7 +18,7 @@ function App(props) {
         <NavBar />
         <div className="app-wrapper-content">
           <Routes>
-            <Route path="/" element={<TalkingCircle />}/>
+            <Route path="/" element={<Home />}/>
             <Route path="/signin" element={<SignIn />}/>
             <Route path="/signup" element={<SignUp store={props.store} />}/>
             <Route path="/profile" element={<Profile />}/>

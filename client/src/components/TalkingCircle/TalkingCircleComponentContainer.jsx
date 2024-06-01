@@ -65,6 +65,7 @@ const TalkingCircleComponentContainer = (props) => {
             const res = await axios.post('https://824c-2605-ad80-a1-109a-27c1-ad7c-cbfa-1aea.ngrok-free.app/get-response', request_data, {
                 headers: {
                 'Content-Type': 'application/json',
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
                 },
             })
 
@@ -77,7 +78,10 @@ const TalkingCircleComponentContainer = (props) => {
                         answer: res.data,
                         voice_id: selectedOption.voice_id
                     },
-                    responseType: 'blob'
+                    responseType: 'blob',
+                    headers: {
+                        'ngrok-skip-browser-warning': 'skip-browser-warning',
+                    }
                 })
                 
                 setIsThinking(false)

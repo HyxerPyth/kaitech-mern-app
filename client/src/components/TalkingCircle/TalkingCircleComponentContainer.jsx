@@ -66,6 +66,7 @@ const TalkingCircleComponentContainer = (props) => {
                 headers: {
                 'Content-Type': 'application/json',
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Content-Type': 'application/json; charset=UTF-8'
                 },
             })
 
@@ -80,6 +81,7 @@ const TalkingCircleComponentContainer = (props) => {
                     },
                     responseType: 'blob',
                     headers: {
+                        'Content-Type': 'application/json; charset=UTF-8',
                         'ngrok-skip-browser-warning': 'skip-browser-warning',
                     }
                 })

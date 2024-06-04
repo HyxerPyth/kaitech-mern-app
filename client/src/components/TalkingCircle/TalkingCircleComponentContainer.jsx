@@ -62,7 +62,7 @@ const TalkingCircleComponentContainer = (props) => {
         }
 
         try {
-            const res = await axios.post('https://69ff-2605-ad80-a1-109a-27c1-ad7c-cbfa-1aea.ngrok-free.app/get-response', request_data, {
+            const res = await axios.post('https://6e68-2605-ad80-a1-109a-27c1-ad7c-cbfa-1aea.ngrok-free.app/get-response', request_data, {
                 headers: {
                 'Content-Type': 'application/json',
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
@@ -74,7 +74,7 @@ const TalkingCircleComponentContainer = (props) => {
 
             // get audio from server
             try {
-                const response = await axios.get('https://69ff-2605-ad80-a1-109a-27c1-ad7c-cbfa-1aea.ngrok-free.app/get-response-audio', {
+                const response = await axios.get('https://6e68-2605-ad80-a1-109a-27c1-ad7c-cbfa-1aea.ngrok-free.app/get-response-audio', {
                     params: {
                         answer: res.data,
                         voice_id: selectedOption.voice_id
@@ -89,7 +89,6 @@ const TalkingCircleComponentContainer = (props) => {
                 setIsThinking(false)
                 const blob = new Blob([response.data], { type: 'audio/mpeg' });
                 playAudio(blob)
-                console.log(response.data)
             } catch (error) {
                 console.error('Error fetching data:', error)
             }
@@ -111,7 +110,7 @@ const TalkingCircleComponentContainer = (props) => {
       }
 
     const handleTEST = () => {
-        axios.get('https://69ff-2605-ad80-a1-109a-27c1-ad7c-cbfa-1aea.ngrok-free.app/test').then((res) => {
+        axios.get('https://6e68-2605-ad80-a1-109a-27c1-ad7c-cbfa-1aea.ngrok-free.app/test').then((res) => {
             console.log(res)
         })
     }

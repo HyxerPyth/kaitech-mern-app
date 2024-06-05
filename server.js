@@ -24,7 +24,7 @@ app.use('/signups', signups);
 
 app.use('/getresponse', getresponse);
 
-app.use('getaudioresponse', getaudioresponse);
+app.use('/getaudioresponse', getaudioresponse);
 
 app.listen(8080, () => {
     console.log('Server is running on port 8080');

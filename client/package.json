@@ -1,6 +1,7 @@
 {
   "name": "kaitech",
   "version": "0.1.0",
+  "proxy": "http://localhost:8080",
   "homepage": "https://kai-tech.org",
   "private": true,
   "dependencies": {

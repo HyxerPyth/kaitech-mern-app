@@ -1,3 +1,12 @@
+.homeWrapper {
+    height: 90dvh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .LoginButton, .SignupButton {
     background-color: transparent;
     border: 2px solid #ffffff;
@@ -19,49 +28,61 @@
 }
 
 .Container {
+    
+}
+
+.buttonWrapper {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
-    height: 60vh; /* Adjust as needed */
+    align-items: center;
+    margin-top: 20px;
+
 }
 
 .Description {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 10px;
 }
 
 .Title {
     margin-left: 10px;
 }
 
-.donateButton {
+/* .donateButton {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px; /* adjust as needed */
-    height: 50px; /* adjust as needed */
-    background-color: #ffffff;
-    color: #000000; /* adjust as needed */
-    border: 3px solid #000000; /* adjust as needed */
-    position: relative; /* or absolute, depending on your layout */
-    top: 600px; /* adjust as needed */
-    left: 1400px; /* adjust as needed */
+    padding: 10px;
+    background-color: #000;
+    color: #000000; /* 
+    border: 3px solid #000000;
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translate(50%, 0);
+} */
+
+.donateimg {
+    width: 200px;
+    margin-bottom: 10px;
 }
 
 .talkingCircleLink {
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 .talkingCircleButton {
-    padding: 10px 24px;
-    font-size: 30px;
+    padding: 10px;
+    font-size: 25px;
     background-color: #000;
     color: #fff;
     border: 2px solid #fff;
@@ -69,4 +90,19 @@
     cursor: pointer;
     transition-duration: 0.4s;
     border-radius: 4px;
+}
+
+
+@media (max-width: 700px) {
+    .Text {
+        font-size: 0.8em;
+        padding: 15px;  
+    }
+    .talkingCircleButton {
+        font-size: 20px;
+    }   
+    .SignupButton, .LoginButton {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
 }

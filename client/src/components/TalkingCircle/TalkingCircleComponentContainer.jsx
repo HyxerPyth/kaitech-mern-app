@@ -62,9 +62,11 @@ const TalkingCircleComponentContainer = (props) => {
         }
 
         try {
-            const res = await axios.post('https://kai-tech.org/get-response', request_data, {
+            const res = await axios.post('https://824c-2605-ad80-a1-109a-27c1-ad7c-cbfa-1aea.ngrok-free.app/get-response', request_data, {
                 headers: {
                 'Content-Type': 'application/json',
+                'ngrok-skip-browser-warning': 'skip-browser-warning',
+                'Content-Type': 'application/json; charset=UTF-8'
                 },
             })
 
@@ -72,16 +74,22 @@ const TalkingCircleComponentContainer = (props) => {
 
             // get audio from server
             try {
-                const response = await axios.get('https://kai-tech.org/get-response-audio', {
+                const response = await axios.get('https://824c-2605-ad80-a1-109a-27c1-ad7c-cbfa-1aea.ngrok-free.app/get-response-audio', {
                     params: {
                         answer: res.data,
                         voice_id: selectedOption.voice_id
                     },
-                    responseType: 'blob'
+                    responseType: 'blob',
+                    headers: {
+                        'Content-Type': 'application/json; charset=UTF-8',
+                        'ngrok-skip-browser-warning': 'skip-browser-warning',
+                    }
                 })
                 
                 setIsThinking(false)
-                playAudio(response.data)
+                const blob = new Blob([response.data], { type: 'audio/mpeg' });
+                playAudio(blob)
+                console.log(response.data)
             } catch (error) {
                 console.error('Error fetching data:', error)
             }
@@ -102,6 +110,13 @@ const TalkingCircleComponentContainer = (props) => {
         })
       }
 
+    const handleTEST = () => {
+        axios.get('https://824c-2605-ad80-a1-109a-27c1-ad7c-cbfa-1aea.ngrok-free.app/test').then((res) => {
+            console.log(res)
+        })
+    }
+
+
     return (
         <div className={style.personSelectionRow}>
             <div className={style.selectPerson}>
@@ -117,6 +132,8 @@ const TalkingCircleComponentContainer = (props) => {
                     {selectedOption.language_display}
                 </div>
             </div>
+
+            <div onClick={handleTEST}>TEST</div>
 
             <div className={style.circleWrapper}>
                 <svg height='100%' width='100%' viewBox="0 0 450 450" className={style.svgcircle}>

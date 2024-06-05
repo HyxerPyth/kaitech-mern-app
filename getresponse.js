@@ -14,9 +14,11 @@ router.post('/getresponse', async (req, res) => {
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
                 'Content-Type': 'application/json; charset=UTF-8'
             }
+        }).then((response) => {
+            res.status(response.status).json(response.data);
         });
 
-        res.status(response.status).json(response.data);
+        
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal server error' });

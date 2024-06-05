@@ -62,7 +62,7 @@ const TalkingCircleComponentContainer = (props) => {
         }
 
         try {
-            const res = await axios.post('/getresponse', request_data, {
+            const res = await axios.post('https://b83f-162-245-68-145.ngrok-free.app/get-response', request_data, {
                 headers: {
                 'Content-Type': 'application/json',
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
@@ -79,7 +79,7 @@ const TalkingCircleComponentContainer = (props) => {
             }
             // get audio from server
             try {
-                const response = await axios.post('/getaudioresponse', request_data_audio, {
+                const response = await axios.post('https://b83f-162-245-68-145.ngrok-free.app/get-response-audio', request_data_audio, {
                     responseType: 'blob',
                     headers: {
                         'Content-Type': 'application/json; charset=UTF-8',
@@ -111,7 +111,12 @@ const TalkingCircleComponentContainer = (props) => {
       }
 
     const handleTEST = () => {
-        axios.get('https://b83f-162-245-68-145.ngrok-free.app/test').then((res) => {
+        axios.get('https://b83f-162-245-68-145.ngrok-free.app/test', { 
+            headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+            'ngrok-skip-browser-warning': 'skip-browser-warning',
+        }}
+    ).then((res) => {
             console.log(res)
         })
     }

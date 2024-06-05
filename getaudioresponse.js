@@ -8,7 +8,7 @@ router.post('/getaudioresponse', async (req, res) => {
     try {
         const userData = req.body;
 
-        const response = await axios.post('https://69ff-2605-ad80-a1-109a-27c1-ad7c-cbfa-1aea.ngrok-free.app/get-response', userData, {
+        const response = await axios.post('https://b83f-162-245-68-145.ngrok-free.app/get-response-audio', userData, {
             headers: {
                 'Content-Type': 'application/json',
                 'ngrok-skip-browser-warning': 'skip-browser-warning',

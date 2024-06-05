@@ -62,23 +62,24 @@ const TalkingCircleComponentContainer = (props) => {
         }
 
         try {
-            const res = await axios.post('https://b83f-162-245-68-145.ngrok-free.app/get-response', request_data, {
+            const res = await axios.post('/getresponse/getresponse', request_data, {
                 headers: {
                 'Content-Type': 'application/json',
                 'ngrok-skip-browser-warning': 'skip-browser-warning',
                 'Content-Type': 'application/json; charset=UTF-8'
                 },
             })
+            console.log(res.data)
 
             addToArray({name: selectedOption.internal_name, message: res.data })
 
+            const request_data_audio = {
+                answer: res.data,
+                voice_id: selectedOption.voice_id
+            }
             // get audio from server
             try {
-                const response = await axios.get('https://b83f-162-245-68-145.ngrok-free.app/get-response-audio', {
-                    params: {
-                        answer: res.data,
-                        voice_id: selectedOption.voice_id
-                    },
+                const response = await axios.post('/getaudioresponse/getaudioresponse', request_data_audio, {
                     responseType: 'blob',
                     headers: {
                         'Content-Type': 'application/json; charset=UTF-8',

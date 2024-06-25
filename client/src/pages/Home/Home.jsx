@@ -7,32 +7,49 @@ import style from './Home.module.css';
 const Home = (props) => {
     return (
         <div className={style.homeWrapper}>
-            <div className={style.Text}>
-                <div className={style.Description}>you can use the signup button to register you phone number</div>
-                <div className={style.Description}>once you signed up, you will be able to call Andrew Tate</div>
+            <div className={style.MainText}>
+                <div className={style.ProjectTitle}>Stay With Me</div>
+                <div className={style.ProjectDescription}> 
+                    Create AI versions of real people. 
+                </div> 
+            
+            <div className={style.MainButtonsContainer}>
+                <div>
+                    <button className={style.CreateButton} >
+                        <a href="#test">Create</a>
+                    </button>
+                </div>
+                <div>
+                    <button className={style.LearnMoreButton} >
+                        <a href="#test">Learn More </a>
+                    </button>
+                </div>
+            </div>
+            <div className={style.Test} id="test">
+                hello
+            </div>
             </div>
             
-           
-                <div className={style.talkingCircleLink}>
+                {/* <div className={style.talkingCircleLink}>
                     <NavLink to="/talking-circle">
                         <button className={style.talkingCircleButton}>
                             Talk to people
                         </button>
                     </NavLink>
-                </div>
+                </div> */}
                 
                 {/* <NavLink to="/signin">
                 <button className={style.LoginButton}>
                     Sign In
                 </button>
                 </NavLink> */}
-                <NavLink to="/signup" className={style.SignupButtonLink}>
+                {/* <NavLink to="/signup" className={style.SignupButtonLink}>
                     <button className={style.SignupButton}>
                         Sign Up
                     </button>
-                </NavLink>
-           
-           <div className={style.donateButton}> 
+                </NavLink> */}
+
+           {/* <div className={style.donateButton}> 
                 <form action="https://www.paypal.com/donate" method="post" target="_top">
                     <input type="hidden" name="business" value="A3PQEFVJU37W4" />
                     <input type="hidden" name="no_recurring" value="0" />
@@ -41,8 +58,9 @@ const Home = (props) => {
                     <input type="image" src="./donate_paypal.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" className={style.donateimg} />
                     <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" />
                 </form>
-            </div>
+            </div> */}
         </div>
+        
     );
 }
 

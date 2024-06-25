@@ -1,16 +1,17 @@
 .homeWrapper {
-    height: 90dvh;
-    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    
 }
+
 
 .LoginButton, .SignupButton {
     background-color: transparent;
     border: 2px solid #ffffff;
-    color: #ffffff;
+    color: #ffffff9d;
     padding: 10px 24px;
     text-align: center;
     text-decoration: none;
@@ -23,12 +24,13 @@
 }
 
 .LoginButton:hover, .SignupButton:hover, .talkingCircleButton:hover {
-    background-color: #ffffff;
+    background-color: #ffffff9d;
     color: #000000;
 }
 
-.Container {
-    
+.Test {
+    position: relative;
+    top: 1200px
 }
 
 .buttonWrapper {
@@ -40,15 +42,72 @@
 
 }
 
-.Description {
-    display: flex;
+.MainText {
+    display: relative;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
     padding: 10px;
+    text-align: center;
+    margin-bottom: 100px;
 }
 
-.Title {
-    margin-left: 10px;
+.MainButtonsContainer {
+    display: flex;
+    justify-content: center; /* Centers the buttons horizontally */
+    align-items: center;
+    margin-top: 15px;
+}
+
+.LearnMoreButton {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(76, 130, 210);
+    font-size: 20px;
+    height: 65px;
+    width: 170px;
+    margin: 10px; 
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+}
+
+.CreateButton {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(0, 183, 255);
+    font-size: 20px;
+    height: 65px;
+    width: 170px;
+    margin: 10px; 
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+    box-shadow: 0 0 20px #ffff;
+}
+
+.CreateButton:hover { 
+    box-shadow: 0 0 30px #ffffff; 
+}
+
+.LearnMoreButton a, .CreateButton a {
+    color: inherit; /* Inherits color from parent */
+    text-decoration: none; /* Removes underline from the links */
+}
+
+.ProjectTitle {
+    font-size: 90px;
+    margin: 10px;
+}
+
+.ProjectDescription {
+    font-size: 50px;
 }
 
 /* .donateButton {

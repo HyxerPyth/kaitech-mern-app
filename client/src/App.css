@@ -1,8 +1,14 @@
 .app-wrapper {
-  position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: black;
+  background-color: rgb(17, 17, 17);
+  font-family: sans-serif;
+  background-image: url('../src/pages/Home/132.png'), linear-gradient(to bottom, rgba(255,255,255,0), rgb(17, 17, 17));
+  background-size: cover, cover;
+  /* background-size: 1568px 994px; */
+  position: relative;
 }
+
+

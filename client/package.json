@@ -6,6 +6,7 @@
   "private": true,
   "dependencies": {
     "@azure/cosmos": "^4.0.0",
+    "@react-oauth/google": "^0.12.1",
     "@reduxjs/toolkit": "^2.2.3",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -13,6 +14,7 @@
     "axios": "^1.6.8",
     "final-form": "^4.20.10",
     "framer-motion": "^11.2.6",
+    "jwt-decode": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-final-form": "^6.5.9",

@@ -1,10 +1,41 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
 import style from './Home.module.css';
+import { useGoogleLogin } from '@react-oauth/google';
+import axios from "axios";
 
+
+function navigate(url){
+    window.location.href = url 
+}
+
+
+async function auth(){
+    const response = await fetch('http://127.0.0.1:8080/request', 
+    {method: 'post'});
+    const data = await response.json();
+    navigate(data.url)
+}
 
 
 const Home = (props) => {
+
+    const login = useGoogleLogin({
+        onSuccess: async (response) => {
+            try { 
+                const res = await axios.get(
+                    'https://www.googleapis.com/oauth2/v3/userinfo',
+                    {
+                        headers: {
+                            Authorization: `Bearer ${response.access_token}`
+                        },
+                    });
+                    console.log(res);
+                }catch (err) {
+                    console.log(err)
+                }
+            }});
+    
     return (
         <div className={style.homeWrapper}>
             <div className={style.MainText}>
@@ -15,8 +46,8 @@ const Home = (props) => {
             
             <div className={style.MainButtonsContainer}>
                 <div>
-                    <button className={style.CreateButton} >
-                        <a href="#test">Create</a>
+                    <button type="button" onClick={() => auth()} className={style.CreateButton} >
+                        Create
                     </button>
                 </div>
                 <div>
@@ -49,7 +80,7 @@ const Home = (props) => {
                     </button>
                 </NavLink> */}
 
-           {/* <div className={style.donateButton}> 
+        {/* <div className={style.donateButton}> 
                 <form action="https://www.paypal.com/donate" method="post" target="_top">
                     <input type="hidden" name="business" value="A3PQEFVJU37W4" />
                     <input type="hidden" name="no_recurring" value="0" />
@@ -60,7 +91,6 @@ const Home = (props) => {
                 </form>
             </div> */}
         </div>
-        
     );
 }
 
